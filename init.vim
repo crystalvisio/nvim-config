@@ -1,5 +1,4 @@
-" ---- General Settings ----
-
+" <---- General Settings ---->
 :set number
 :set autoindent
 :set tabstop=4
@@ -10,7 +9,8 @@
 
 set encoding=UTF-8
 
-" ---- PlugIns ----
+
+" <---- Adding PlugIns ---->
 
 call plug#begin('~/.config/nvim/plugged')
 
@@ -30,59 +30,41 @@ Plug 'sheerun/vim-polyglot'  " Add Default Syntax Highlighting
 
 call plug#end()
 
-" ---- Mapping KeyBinds ----
+
+" <---- Mapping KeyBinds ---->
 nnoremap <C-f> :NERDTreeFocus<CR> " Focus on the NERD Tree window
 nnoremap <C-e> :NERDTreeToggle<CR> " Open NerdTree if closed and vice versa
-inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
-
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>" " Enter Key selects suggestions
 nmap <C-r> :TagbarToggle<CR>
-
 
 :set completeopt-=preview "For No Previews
 
 
-" ---- Notes ----
+" <---- Notes ---->
 "  :PlugClean :PlugInstall :UpdateRemotePlugins
-"
 "  :CocInstall coc-clang
 "  :CocInstall coc-snippets
 "  :CocCommand snippets.edit... FOR EACH FILE TYPE
 
-" ---- airline ----
+
+" <---- airline ---->
 let g:airline_powerline_fonts = 1
 
 if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
 endif
 
-" ---- Adding Python Intepreter ----
+
+" <---- Adding Python Intepreter ---->
 let g:python3_host_prog='~/.config/nvim_env/bin/python3'
 
 
-" <---- Arrow Key Navigation---->
-
-inoremap <Left> <C-o>:call s:move_cursor_left()<CR>
-
-function! s:move_cursor_left()
-    if col('.') == 1 && line('.') > 1
-        " Move up to the previous line
-        execute 'normal! gk'
-        " Move to the last character of that line
-        execute 'normal! $'
-    else
-        " Just move left normally
-        execute 'normal! h'
-    endif
-endfunction
-
 " <---- Auto-Completion of Quotes ---->
-
 inoremap <expr> ' getline('.') =~# '\<C-v>' ? "''" : "'"
 inoremap <expr> " getline('.') =~# '\<C-v>' ? '""' : '"'
 
 
 " <---- Brackets Auto-Pairing and Quotes ---->
-
 inoremap { {}<Left>
 inoremap ( ()<Left>
 inoremap [ []<Left>
