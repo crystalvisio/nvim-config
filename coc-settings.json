@@ -1,0 +1,6 @@
+{
+	"suggest.noselect": false,
+	"coc.preferences.acceptSuggestionOnEnter": "on",
+	"coc.preferences.autoPairs.enabled": true,
+	"coc.preferences.signatureHelpTriggerCharacters": ["(", ","]
+} 
